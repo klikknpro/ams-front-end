@@ -4,7 +4,7 @@ import http from "axios";
 const Favorites = () => {
   return (
     <div>
-      <h1>Favorites</h1>
+      <h2>Favorites</h2>
       <div className="image" >
         </div>
     </div>

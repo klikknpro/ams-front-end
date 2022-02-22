@@ -131,8 +131,10 @@ h1 {
   font-family: "Fjalla One", sans-serif;
   font-weight: 400;
   font-size: 42px;
+  opacity: 0.9;
 
   margin-top: 50px;
+  text-shadow: 1.2px 1.2px #203239;
 }
 
 .App {
@@ -296,8 +298,10 @@ div.detailed img {
 }
 
 h2 {
-  margin-top: 30px;
+  margin-top: 35px;
   font-family: "Fjalla One", sans-serif;
+  font-size: 32px;
+  letter-spacing: 0.2rem;
 }
 
 .login-form {

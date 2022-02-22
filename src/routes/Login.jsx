@@ -71,7 +71,7 @@ const Login = (props) => {
 
   return (
     <div>
-        <h1>Login</h1>
+        <h2>Login</h2>
         <div className='login-form'>
           <input type="text" placeholder="authUsername" value={authUser} onChange={(e) => setAuthUser(e.target.value)}/>
           <input type="password" placeholder="authPassword" value={authPassword} onChange={(e) => setAuthPassword(e.target.value)}/>

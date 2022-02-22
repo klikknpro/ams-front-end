@@ -34,7 +34,7 @@ const SignUp = () => {
 
   return (
     <div className="signup-form">
-      <h1>Sign Up</h1>
+      <h2>Sign Up</h2>
       <div className='login-form'>
         <input type="text" placeholder="username" value={nameValue} onChange={(e) => setNameValue(e.target.value)}/>
         <input
