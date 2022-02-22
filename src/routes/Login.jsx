@@ -8,16 +8,22 @@ const Login = (props) => {
   const [nameValue, setNameValue] = useState('');
   const [passwordValue, setPasswordValue] = useState('');
 
-  const [authUser, setAuthUser] = useState('');
-  const [authPassword, setAuthPassword] = useState('');
+  // const [authUser, setAuthUser] = useState('');
+  // const [authPassword, setAuthPassword] = useState('');
 
+  const authUser = props.authUser;
+  const setAuthUser = props.setAuthUser;
+  const authPassword = props.authPassword;
+  const setAuthPassword = props.setAuthPassword;
+
+  const loggedIn = props.loggedIn;
   const setLoggedIn = props.setLoggedIn;
 
   let navigate = useNavigate();
 
   const login = async () => {
     try {
-      await http.post('http://localhost:3001/api/login', {
+      const response = await http.post('http://localhost:3001/api/login', {
 
     }, {
         headers: {
@@ -27,7 +33,10 @@ const Login = (props) => {
     //   console.log(authUser, authPassword);
       getPassword();
       alert('Successful login')
-      localStorage.setItem('user', authUser)
+      setLoggedIn(true)
+      // localStorage.setItem('user', authUser)
+      localStorage.setItem('sessionId', response.data)
+
     //   localStorage.setItem('password', authPassword)
     } catch (err) {
       alert('Wrong username or password')
@@ -37,35 +46,33 @@ const Login = (props) => {
   const getPassword = async () => {
       try {
         const password = await http.get('http://localhost:3001/api/login')
-        localStorage.setItem('password', password.data)
-        setLoggedIn(true)
+        // localStorage.setItem('password', password.data)
         navigate("/")
       } catch(err) {
         alert('Something went wrong')
       }
   }
 
-  const signOut = () => {
-    localStorage.removeItem('user', authUser)
-    localStorage.removeItem('password', authPassword)
-
-    setAuthUser('')
-    setAuthPassword('')
-  }
+  // const signOut = () => {
+  //     localStorage.removeItem('user', authUser)
+  //     localStorage.removeItem('password', authPassword)
+  
+  //     setAuthUser('')
+  //     setAuthPassword('')
+  // }
 
   // dependency arraybe kell majd egy useState value
   useEffect(() => {
-    const user = localStorage.getItem('user')
-    const password = localStorage.getItem('password')
-    if (!user || !password) return;
-    setAuthUser(user)
-    setAuthPassword(password)
+    // const user = localStorage.getItem('user')
+    // const password = localStorage.getItem('password')
+    const sessionId = localStorage.getItem('sessionId')
+    if (!sessionId) return;
+    // setAuthUser(user)
+    // setAuthPassword(password)
   }, [])
 
   // nem biztos, hogy kell ez
   useEffect(() => {
-    localStorage.removeItem('user')
-    localStorage.removeItem('password')
   }, [])
   
 
@@ -79,6 +86,9 @@ const Login = (props) => {
     </div>
   );
 }
+// localStorage.removeItem('user')
+// localStorage.removeItem('password')
+
 
 export default Login;
 

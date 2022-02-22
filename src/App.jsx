@@ -14,6 +14,9 @@ function App() {
   const [details, setDetails] = useState({});
   const [loggedIn, setLoggedIn] = useState(false);
   const username = localStorage.getItem("username");
+  const [authUser, setAuthUser] = useState('');
+  const [authPassword, setAuthPassword] = useState('');
+
   /*
   sweet memories :)
   const teaFilter = async (resp) => {
@@ -25,7 +28,7 @@ function App() {
 
   return (
     <div className="App">
-      <NavBar />
+      <NavBar loggedIn={loggedIn} setLoggedIn={setLoggedIn}/>
       <h1>Welcome to Art museum!</h1>
       {/* <SignUp/> */}
       <Routes>
@@ -37,7 +40,7 @@ function App() {
         <Route path="/signup" element={<SignUp />} />
         <Route
           path="/login"
-          element={<Login loggedIn={loggedIn} setLoggedIn={setLoggedIn} />}
+          element={<Login loggedIn={loggedIn} setLoggedIn={setLoggedIn} authUser={authUser} authPassword={authPassword} setAuthUser={setAuthUser} setAuthPassword={setAuthPassword}/>}
         />
       </Routes>
     </div>

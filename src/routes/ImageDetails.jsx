@@ -47,6 +47,7 @@ const ImageDetails = () => {
       setNotes("");
       setTags("");
     } catch (err) {
+      
       if (!err.response) alert("No No");
     }
   };
