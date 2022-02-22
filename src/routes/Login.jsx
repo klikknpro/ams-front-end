@@ -72,10 +72,14 @@ const Login = (props) => {
   return (
     <div>
         <h1>Login</h1>
-        <input type="text" placeholder="authUsername" value={authUser} onChange={(e) => setAuthUser(e.target.value)}/>
-        <input type="password" placeholder="authPassword" value={authPassword} onChange={(e) => setAuthPassword(e.target.value)}/>
-        <button onClick={() => navigate("/signup")}>I don't have an account</button>
-        <button onClick={login}>Log in</button>
+        <div className='login-form'>
+          <input type="text" placeholder="authUsername" value={authUser} onChange={(e) => setAuthUser(e.target.value)}/>
+          <input type="password" placeholder="authPassword" value={authPassword} onChange={(e) => setAuthPassword(e.target.value)}/>
+          <button onClick={() => navigate("/signup")}>I don't have an account</button>
+          <button onClick={login}>Log in</button>
+          <div className="image" >
+          </div>
+        </div>
     </div>
   );
 }

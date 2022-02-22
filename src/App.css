@@ -244,6 +244,7 @@ button:hover {
 .main div p {
   display: flex;
   flex-direction: column;
+  color: #203239;
 }
 
 div.detailed {
@@ -297,4 +298,27 @@ div.detailed img {
 h2 {
   margin-top: 30px;
   font-family: "Fjalla One", sans-serif;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+
+.login-form button {
+  width: 7rem;
+  height: 2.5rem;
+}
+
+.login-form input {
+  width: 12rem;
+  height: 2rem;
+  text-align: center;
+}
+
+.login-form input:first-child {
+  margin-top: 40px;
 }

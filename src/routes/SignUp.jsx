@@ -34,14 +34,19 @@ const SignUp = () => {
 
   return (
     <div className="signup-form">
-      <input type="text" placeholder="username" value={nameValue} onChange={(e) => setNameValue(e.target.value)}/>
-      <input
-        type="password"
-        placeholder="password"
-        value={passwordValue}
-        onChange={(e) => setPasswordValue(e.target.value)}
-      />
-      <button onClick={signUp}>Sign up</button>
+      <h1>Sign Up</h1>
+      <div className='login-form'>
+        <input type="text" placeholder="username" value={nameValue} onChange={(e) => setNameValue(e.target.value)}/>
+        <input
+          type="password"
+          placeholder="password"
+          value={passwordValue}
+          onChange={(e) => setPasswordValue(e.target.value)}
+        />
+        <button onClick={signUp}>Sign up</button>
+        <div className="image" >
+        </div>
+      </div>
     </div>
   )
 }
