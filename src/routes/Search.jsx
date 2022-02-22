@@ -31,6 +31,11 @@ function Search() {
     const pageNumber = Number(event.target.textContent);
     setCurrentPage(pageNumber);
   }
+  
+  function goToFirstPage() {
+    setCurrentPage(0);
+    // console.log(currentPage);
+  }
 
   // Cleveland API
   const loadCleveland = async (keyword) => {
@@ -125,6 +130,12 @@ function Search() {
         onChange={(event) => changePage(event)}
       >
         Up
+      </button>
+      <button
+        onClick={() => goToFirstPage()}
+        onChange={(event) => changePage(event)}
+      >
+        First page
       </button>
       {/* {isFetching && <p>Fetching items...</p>}
       {!isFetching && <button onClick={loadMoreItems}>Load more</button>} */}
