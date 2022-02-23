@@ -65,6 +65,7 @@ const ImageDetailsHome = () => {
         }
       }
       );
+      saveToCollection()
       alert("Added to favorites");
       setNotes("");
       setTags("");
@@ -73,6 +74,23 @@ const ImageDetailsHome = () => {
       return alert("Oops... Something went wrong!");
     }
   };
+
+  const saveToCollection = async () => {
+    const tagsArray = tags.split(",");
+    try {
+      await http.post("http://localhost:3001/api/collection", {
+        url: imageUrl,
+      }, {
+        headers: {
+          authorization: localStorage.getItem('sessionId')
+        }
+      }
+      );
+    } catch (err) {
+      return alert("Oops... Something went wrong!");
+    }
+  };
+
 
   useEffect(() => {
     load();

@@ -67,11 +67,28 @@ const ImageDetails = () => {
         }
       }
       );
+      saveToCollection()
       alert("Added to favorites");
       setNotes("");
       setTags("");
     } catch (err) {
       if (err.response.status === 401) return alert("Please login!");
+      return alert("Oops... Something went wrong!");
+    }
+  };
+
+  const saveToCollection = async () => {
+    const tagsArray = tags.split(",");
+    try {
+      await http.post("http://localhost:3001/api/collection", {
+        url: imageUrl,
+      }, {
+        headers: {
+          authorization: localStorage.getItem('sessionId')
+        }
+      }
+      );
+    } catch (err) {
       return alert("Oops... Something went wrong!");
     }
   };
@@ -123,7 +140,9 @@ const ImageDetails = () => {
           value={tags}
           onChange={(e) => setTags(e.target.value)}
         />
-        <button onClick={saveToFavorites}>Save To Favorites</button>
+        <button onClick={
+          saveToFavorites
+        }>Save To Favorites</button>
         </div>
       </div>
     </div>
