@@ -9,15 +9,25 @@ const Favorites = () => {
     let artworksData = [];
     let sessionId = localStorage.getItem('sessionId');
     try {
-      const response = await http.get("http://localhost:3001/api/myfavorites", {
-        
-      }, {
+      const response = await http.get("http://localhost:3001/api/favorites", {
         headers: {
           authorization: sessionId
         }
+      }, {
+        
       }
       );
       console.log(response)
+      const myCollection = response.data;
+      for (const artwork of myCollection) {
+        const newArtwork = {
+          image: artwork.url,
+          id: artwork.id,
+          title: artwork.title,
+        };
+        artworksData.push(newArtwork);
+      }
+      if (artworksData.length === 0) return alert('You have no favorites yet.')
       // saveToCollection()
       // alert("Added to favorites");
       // setNotes("");
@@ -26,6 +36,7 @@ const Favorites = () => {
       if (err.response.status === 401) return alert("Session ended");
       alert("Oops... Something went wrong!");
     }
+    setImagesOnLoad(artworksData);
     // const params = {
     //   q: keyword, // keyword from input
     //   limit: 20, // number of results
@@ -69,32 +80,23 @@ const Favorites = () => {
     // setImagesOnLoad(artworksData);
   };
 
+  useEffect(() => {
+    loadMyFavorites()
+  }, [])
+  
 
   return (
     <div>
       <h2>Favorites</h2>
       <div className="image" >
-        <button onClick={loadMyFavorites}>Katt</button>
-        <button onClick={loadMyFavorites}>Katt</button>
-        <button onClick={loadMyFavorites}>Katt</button>
-        <button onClick={loadMyFavorites}>Katt</button>
-        <button onClick={loadMyFavorites}>Katt</button>
-        <button onClick={loadMyFavorites}>Katt</button>
-        <button onClick={loadMyFavorites}>Katt</button>
-        <button onClick={loadMyFavorites}>Katt</button>
-        <button onClick={loadMyFavorites}>Katt</button>
-        <button onClick={loadMyFavorites}>Katt</button>
-        <button onClick={loadMyFavorites}>Katt</button>
-        <button onClick={loadMyFavorites}>Katt</button>
-        <button onClick={loadMyFavorites}>Katt</button>
-        <button onClick={loadMyFavorites}>Katt</button>
-        <button onClick={loadMyFavorites}>Katt</button>
-        <button onClick={loadMyFavorites}>Katt</button>
-        <button onClick={loadMyFavorites}>Katt</button>
-        <button onClick={loadMyFavorites}>Katt</button>
-        <button onClick={loadMyFavorites}>Katt</button>
-        <button onClick={loadMyFavorites}>Katt</button>
-        <button onClick={loadMyFavorites}>Katt</button>
+        {imagesOnLoad.map((img, i) => (
+          <div key={img.id}>
+            <Link to={`/imageDetails/${img.id}`}>
+              <img src={img.image} alt="Anyád" />
+            <p className="description">{img.title}</p>
+            </Link>
+          </div>
+        ))}
       </div>
     </div>
   )
