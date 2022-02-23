@@ -131,6 +131,13 @@ const Home = () => {
     return true;
 };
 
+const handleKeyDown = (e) => {
+  if (e.key === 'Enter') {
+    loadCleveland(e.target.value)
+    validateSearch()
+  }
+}
+
   useEffect(() => {
     console.log(currentPage);
     loadCleveland();
@@ -152,6 +159,7 @@ useEffect(() => {
             setKeyword(e.target.value)
             validateSearch()
           }}
+          onKeyDown={handleKeyDown}
           maxLength="200"
         />
         <Link to={`/search/${keyword}`}>

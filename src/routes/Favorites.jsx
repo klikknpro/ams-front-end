@@ -89,17 +89,17 @@ const Favorites = () => {
     <div>
       <h2>Favorites</h2>
       <div className="favorites-img">
-        <div className="image" >
-          </div>
           {imagesOnLoad.map((img) => (
             <div key={img.id}>
               <Link to={`/imageDetails/${img.id}`}>
                 <img src={img.image} alt="Anyád" />
-                <h4 className="description">{img.title}</h4>
+                <p>{img.title}</p>
               </Link>
             </div>
           ))}
         </div>
+        <div className="image" >
+          </div>
     </div>
   )
 }
