@@ -29,7 +29,7 @@ function App() {
   return (
     <div className="App">
       <NavBar loggedIn={loggedIn} setLoggedIn={setLoggedIn}/>
-      <h1>Welcome to Art museum!</h1>
+      <h1>Welcome to Schiele Art Museum!</h1>
       {/* <SignUp/> */}
       <Routes>
         <Route path="/" element={<Home />} />

@@ -90,6 +90,13 @@ function Search() {
     return true;
 };
 
+const handleKeyDown = (e) => {
+  if (e.key === 'Enter') {
+    loadCleveland(e.target.value)
+    validateSearch()
+  }
+}
+
   useEffect(() => {
     console.log(currentPage);
     console.log(counter);
@@ -101,12 +108,13 @@ function Search() {
   }, [keywordAlpha])
   
   return (
-    <div>
+    <div className="main-search">
       <div className="search-part">
       <input
         placeholder="Search"
         type="text"
         defaultValue={keyword}
+        onKeyDown={handleKeyDown}
         onChange={(e) => {
           setKeyword(e.target.value)
           validateSearch()
@@ -148,19 +156,19 @@ function Search() {
         onClick={() => goToPreviousPage()}
         onChange={(event) => changePage(event)}
       >
-        Down
+        Previous
       </button>
       <button
         onClick={() => goToNextPage()}
         onChange={(event) => changePage(event)}
       >
-        Up
+        Next
       </button>
       <button
         onClick={() => goToFirstPage()}
         onChange={(event) => changePage(event)}
       >
-        First page
+        Home
       </button>
       {/* {isFetching && <p>Fetching items...</p>}
       {!isFetching && <button onClick={loadMoreItems}>Load more</button>} */}

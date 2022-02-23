@@ -88,16 +88,18 @@ const Favorites = () => {
   return (
     <div>
       <h2>Favorites</h2>
-      <div className="image" >
-        {imagesOnLoad.map((img, i) => (
-          <div key={img.id}>
-            <Link to={`/imageDetails/${img.id}`}>
-              <img src={img.image} alt="Anyád" />
-            <p className="description">{img.title}</p>
-            </Link>
+      <div className="favorites-img">
+          {imagesOnLoad.map((img) => (
+            <div key={img.id}>
+              <Link to={`/imageDetails/${img.id}`}>
+                <img src={img.image} alt="Anyád" />
+              </Link>
+              <p>{img.title}</p>
+            </div>
+          ))}
+        </div>
+        <div className="image" >
           </div>
-        ))}
-      </div>
     </div>
   )
 }

@@ -90,6 +90,27 @@ body {
   padding-inline-start: 5px;
 }
 
+div.favorites-img {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+
+  margin: 100px 20px 100px 20px;
+  gap: 10px;
+}
+
+div.favorites-img img {
+  position: relative;
+  z-index: 10;
+  width: 40vh;
+}
+
+div.favorites-img p {
+  color: black;
+  z-index: 10;
+  /* display: block; */
+  position: relative;
+}
+
 .button-bottom {
   position: relative;
   margin-bottom: 20px;
@@ -212,7 +233,7 @@ button:hover {
   /* grid-template-rows: 1fr 1fr 1fr 1fr 1fr; */
 
   margin: 100px 20px 100px 20px;
-  gap: 10px;
+  gap: 15px;
 }
 
 .main div {
@@ -220,7 +241,7 @@ button:hover {
   flex-direction: column;
   height: 100%;
   justify-content: center;
-  max-height: 65vh;
+  max-height: 70vh;
   z-index: 2;
   margin-top: 50px;
 
@@ -228,7 +249,7 @@ button:hover {
   border-radius: 10px;
 
   background-color: rgba(224, 221, 170, 0.2);
-  gap: 15px;
+  gap: 10px;
 }
 
 .detailed img {
@@ -246,7 +267,10 @@ button:hover {
 .main div p {
   display: flex;
   flex-direction: column;
+  align-self: center;
   color: #203239;
+  line-height: 1.2rem;
+  padding: 10px 10px 0 10px;
 }
 
 div.detailed {
@@ -323,8 +347,15 @@ h2 {
 }
 
 .login-form button {
+  width: 9rem;
+  height: 2.5rem;
+  margin-top: 5px;
+}
+
+.login-form button:nth-of-type(2) {
   width: 7rem;
   height: 2.5rem;
+  margin-top: 20px;
 }
 
 .login-form input {
@@ -341,9 +372,22 @@ div.full p {
   margin-top: 10px;
 }
 
+a,
+nav,
 button,
 h1,
 h2,
-input {
+input,
+div.main {
   z-index: 10;
+  position: relative;
+}
+
+nav button {
+  height: 2rem;
+  margin-left: 10px;
+}
+
+p.description {
+  padding: 0 10px 0 10px;
 }
