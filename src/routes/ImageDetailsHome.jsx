@@ -33,6 +33,23 @@ const ImageDetailsHome = () => {
     setImageUrl(response.data.data.images.web.url);
   };
 
+  // const saveToFavorites = async () => {
+  //   const tagsArray = tags.split(",");
+  //   try {
+  //     await http.post("http://localhost:3001/api/favorites", {
+  //       id: id,
+  //       title: title,
+  //       url: imageUrl,
+  //       note: notes,
+  //       tags: tagsArray,
+  //     });
+  //     alert("success");
+  //     setNotes("");
+  //     setTags("");
+  //   } catch (err) {
+  //     if (!err.response) alert("No No");
+  //   }
+  // };
   const saveToFavorites = async () => {
     const tagsArray = tags.split(",");
     try {
@@ -42,12 +59,18 @@ const ImageDetailsHome = () => {
         url: imageUrl,
         note: notes,
         tags: tagsArray,
-      });
-      alert("success");
+      }, {
+        headers: {
+          authorization: localStorage.getItem('sessionId')
+        }
+      }
+      );
+      alert("Added to favorites");
       setNotes("");
       setTags("");
     } catch (err) {
-      if (!err.response) alert("No No");
+      if (err.response.status === 401) return alert("Session ended");
+      return alert("Oops... Something went wrong!");
     }
   };
 
