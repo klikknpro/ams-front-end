@@ -63,6 +63,7 @@ const Home = () => {
           };
           artworksData.push(newArtwork);
         }
+        if (artworksData.length === 0) return alert('Sorry, no results for this search.')
       })
       // .then((response) => {
       // setImagesOnLoad((prevImages) => {
@@ -139,10 +140,14 @@ const Home = () => {
           type="text"
           value={keyword}
           onChange={(e) => setKeyword(e.target.value)}
+          maxLength="200"
         />
         <Link to={`/search/${keyword}`}>
           {" "}
-          <button onClick={() => loadCleveland(keyword)}
+          <button onClick={() => {
+            validateSearch();
+            loadCleveland(keyword)
+          }}
           disabled={keyword.length < 3 || keyword.length === 0 ? true : false}
           >OK</button>
         </Link>
@@ -156,8 +161,8 @@ const Home = () => {
           <div key={img.id}>
             <Link to={`/imageDetails/${img.id}`}>
               <img src={img.image} alt="Anyád" />
-            </Link>
             <p className="description">{img.title}</p>
+            </Link>
           </div>
         ))}
        

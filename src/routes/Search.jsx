@@ -100,10 +100,12 @@ function Search() {
         type="text"
         defaultValue={keyword}
         onChange={(e) => setKeywordAlpha(e.target.value)}
+        maxLength="200"
       />
       <button
         onClick={() => {
           setKeyword(keywordAlpha);
+          validateSearch();
         }}
         disabled={keywordAlpha.length < 3 || keywordAlpha.length === 0 ? true : false}
       >
