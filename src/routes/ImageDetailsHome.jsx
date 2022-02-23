@@ -66,6 +66,7 @@ const ImageDetailsHome = () => {
       }
       );
       saveToCollection()
+      saveBase64();
       alert("Added to favorites");
       setNotes("");
       setTags("");
@@ -79,6 +80,20 @@ const ImageDetailsHome = () => {
     const tagsArray = tags.split(",");
     try {
       await http.post("http://localhost:3001/api/collection", {
+        url: imageUrl,
+      }, {
+        headers: {
+          authorization: localStorage.getItem('sessionId')
+        }
+      }
+      );
+    } catch (err) {
+      return alert("Oops... Something went wrong!");
+    }
+  };
+  const saveBase64 = async () => {
+    try {
+      await http.post("http://localhost:3001/api/base64", {
         url: imageUrl,
       }, {
         headers: {
