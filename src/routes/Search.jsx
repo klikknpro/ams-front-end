@@ -90,6 +90,13 @@ function Search() {
     return true;
 };
 
+const handleKeyDown = (e) => {
+  if (e.key === 'Enter') {
+    loadCleveland(e.target.value)
+    validateSearch()
+  }
+}
+
   useEffect(() => {
     console.log(currentPage);
     console.log(counter);
@@ -107,6 +114,7 @@ function Search() {
         placeholder="Search"
         type="text"
         defaultValue={keyword}
+        onKeyDown={handleKeyDown}
         onChange={(e) => {
           setKeyword(e.target.value)
           validateSearch()
