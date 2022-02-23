@@ -33,7 +33,7 @@ const Favorites = () => {
       // setNotes("");
       // setTags("");
     } catch (err) {
-      if (err.response.status === 401) return alert("Session ended");
+      if (err.response.status === 401) return alert("Please login!");
       alert("Oops... Something went wrong!");
     }
     setImagesOnLoad(artworksData);
