@@ -71,7 +71,7 @@ function Search() {
         console.log(e);
       });
     setImagesOnLoad(artworksData);
-    if (artworksData.length === 0) {
+    if (artworksData.length === 0 && currentPage !== 0) {
       setCurrentPage(currentPage - 20);
       // return loadCleveland();
     }
