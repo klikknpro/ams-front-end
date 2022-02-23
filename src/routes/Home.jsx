@@ -193,19 +193,19 @@ useEffect(() => {
         onClick={() => goToPreviousPage()}
         onChange={(event) => changePage(event)}
       >
-        Down
+        Previous
       </button>
       <button
         onClick={() => goToNextPage()}
         onChange={(event) => changePage(event)}
       >
-        Up
+        Next
       </button>
       <button
         onClick={() => goToFirstPage()}
         onChange={(event) => changePage(event)}
       >
-        First page
+        Home
       </button>
       {/* {isFetching && <p>Fetching items...</p>}
       {!isFetching && <button onClick={loadMoreItems}>Load more</button>} */}
