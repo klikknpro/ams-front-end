@@ -340,3 +340,10 @@ h2 {
 div.full p {
   margin-top: 10px;
 }
+
+button,
+h1,
+h2,
+input {
+  z-index: 10;
+}
