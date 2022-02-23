@@ -78,11 +78,15 @@ function Search() {
   };
 
   const validateSearch = () => {
-    const regex = /[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
-    if (keyword.length === 0 || regex.test(keyword) === true) {
-        setSearchError("Wrong search format");
+    const regex = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
+    if (regex.test(keyword) === true) {
+        setSearchError("Please dont use special characters in search!");
+        // if (keyword.length === 0) {
+        //   setSearchError("");
+        // }
         return false;
     }
+    setSearchError("")
     return true;
 };
 
@@ -92,6 +96,10 @@ function Search() {
     loadCleveland(keyword);
   }, [currentPage, keyword]);
 
+  useEffect(() => {
+    validateSearch()
+  }, [keywordAlpha])
+  
   return (
     <div>
       <div className="search-part">
@@ -99,16 +107,18 @@ function Search() {
         placeholder="Search"
         type="text"
         defaultValue={keyword}
-        onChange={(e) => setKeywordAlpha(e.target.value)}
-        maxLength="200"
+        onChange={(e) => {
+          setKeyword(e.target.value)
+          validateSearch()
+        }}        maxLength="200"
       />
       <button
         onClick={() => {
           setKeyword(keywordAlpha);
           validateSearch();
         }}
-        disabled={keywordAlpha.length < 3 || keywordAlpha.length === 0 ? true : false}
-      >
+        disabled={keyword.length < 3 || searchError === "Please dont use special characters in search!" ? true : false}
+        >
         OK
       </button>
       <p>{searchError}</p>

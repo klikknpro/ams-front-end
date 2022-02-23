@@ -119,11 +119,15 @@ const Home = () => {
   // };
 
   const validateSearch = () => {
-    const regex = /[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
-    if (keyword.length === 0 || regex.test(keyword) === true) {
-        setSearchError("Wrong search format");
+    const regex = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
+    if (regex.test(keyword) === true) {
+        setSearchError("Please dont use special characters in search!");
+        // if (keyword.length === 0) {
+        //   setSearchError("");
+        // }
         return false;
     }
+    setSearchError("")
     return true;
 };
 
@@ -132,6 +136,11 @@ const Home = () => {
     loadCleveland();
   }, [currentPage]);
 
+useEffect(() => {
+  validateSearch()
+}, [keyword])
+
+
   return (
     <div>
       <div className="search-part">
@@ -139,7 +148,10 @@ const Home = () => {
           placeholder="Search"
           type="text"
           value={keyword}
-          onChange={(e) => setKeyword(e.target.value)}
+          onChange={(e) => {
+            setKeyword(e.target.value)
+            validateSearch()
+          }}
           maxLength="200"
         />
         <Link to={`/search/${keyword}`}>
@@ -148,7 +160,7 @@ const Home = () => {
             validateSearch();
             loadCleveland(keyword)
           }}
-          disabled={keyword.length < 3 || keyword.length === 0 ? true : false}
+          disabled={keyword.length < 3 || searchError === "Please dont use special characters in search!" ? true : false}
           >OK</button>
         </Link>
         <p>{searchError}</p>
