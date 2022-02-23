@@ -131,8 +131,10 @@ h1 {
   font-family: "Fjalla One", sans-serif;
   font-weight: 400;
   font-size: 42px;
+  opacity: 0.9;
 
   margin-top: 50px;
+  text-shadow: 1.2px 1.2px #203239;
 }
 
 .App {
@@ -207,7 +209,7 @@ button:hover {
 .main {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+  /* grid-template-rows: 1fr 1fr 1fr 1fr 1fr; */
 
   margin: 100px 20px 100px 20px;
   gap: 10px;
@@ -218,7 +220,7 @@ button:hover {
   flex-direction: column;
   height: 100%;
   justify-content: center;
-  max-height: 60vh;
+  max-height: 65vh;
   z-index: 2;
   margin-top: 50px;
 
@@ -238,12 +240,13 @@ button:hover {
 }
 
 .main div img {
-  max-height: 40vh;
+  max-height: 50vh;
 }
 
 .main div p {
   display: flex;
   flex-direction: column;
+  color: #203239;
 }
 
 div.detailed {
@@ -268,12 +271,14 @@ div.detailed img {
   height: 60vh;
   display: grid;
   margin-right: 20px;
-  margin-top: 50px;
+  margin-top: 30px;
   grid-column: 2;
   gap: 20px;
   /* align-self: center; */
 
   height: 20px;
+
+  line-height: 1.3rem;
 }
 
 .imgDet-button {
@@ -281,20 +286,57 @@ div.detailed img {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 5px;
+  gap: 8px;
 }
 
 .imgDet-button input {
   width: 20vw;
   text-align: center;
+  border-radius: 5px;
 }
+
+.imgDet-button input:first-child {
+  margin-top: 10px;
+}
+
 .imgDet-button button {
   width: 6rem;
   height: 2.5rem;
   text-align: center;
+  margin-bottom: 10px;
+  border-radius: 10px;
 }
 
 h2 {
-  margin-top: 30px;
+  margin-top: 35px;
   font-family: "Fjalla One", sans-serif;
+  font-size: 32px;
+  letter-spacing: 0.2rem;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+
+.login-form button {
+  width: 7rem;
+  height: 2.5rem;
+}
+
+.login-form input {
+  width: 12rem;
+  height: 2rem;
+  text-align: center;
+}
+
+.login-form input:first-child {
+  margin-top: 40px;
+}
+
+div.full p {
+  margin-top: 10px;
 }

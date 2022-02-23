@@ -13,6 +13,8 @@ const Home = () => {
   const [isFetching, setIsFetching] = useState(false);
   // const [hasMore, setHasMore] = useState(true);
 
+  const [searchError, setSearchError] = useState('')
+
   function goToFirstPage() {
     setCurrentPage(0);
     // console.log(currentPage);
@@ -115,6 +117,15 @@ const Home = () => {
   //   console.log(skipCount);
   // };
 
+  const validateSearch = () => {
+    const regex = /[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
+    if (keyword.length === 0 || regex.test(keyword) === true) {
+        setSearchError("Wrong search format");
+        return false;
+    }
+    return true;
+};
+
   useEffect(() => {
     console.log(currentPage);
     loadCleveland();
@@ -123,16 +134,19 @@ const Home = () => {
   return (
     <div>
       <div className="search-part">
-      <input
-        placeholder="Search"
-        type="text"
-        value={keyword}
-        onChange={(e) => setKeyword(e.target.value)}
-      />
-      <Link to={`/search/${keyword}`}>
-        {" "}
-        <button onClick={() => loadCleveland(keyword)}>OK</button>
-      </Link>
+        <input
+          placeholder="Search"
+          type="text"
+          value={keyword}
+          onChange={(e) => setKeyword(e.target.value)}
+        />
+        <Link to={`/search/${keyword}`}>
+          {" "}
+          <button onClick={() => loadCleveland(keyword)}
+          disabled={keyword.length < 3 || keyword.length === 0 ? true : false}
+          >OK</button>
+        </Link>
+        <p>{searchError}</p>
       </div>
       <div className="image" >
       </div>

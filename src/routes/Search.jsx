@@ -17,6 +17,8 @@ function Search() {
 
   const [isFetching, setIsFetching] = useState(false);
 
+  const [searchError, setSearchError] = useState('')
+
   function goToNextPage() {
     setCurrentPage((page) => page + 20);
   }
@@ -30,6 +32,11 @@ function Search() {
   function changePage(event) {
     const pageNumber = Number(event.target.textContent);
     setCurrentPage(pageNumber);
+  }
+
+  function goToFirstPage() {
+    setCurrentPage(0);
+    // console.log(currentPage);
   }
 
   // Cleveland API
@@ -70,6 +77,15 @@ function Search() {
     }
   };
 
+  const validateSearch = () => {
+    const regex = /[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
+    if (keyword.length === 0 || regex.test(keyword) === true) {
+        setSearchError("Wrong search format");
+        return false;
+    }
+    return true;
+};
+
   useEffect(() => {
     console.log(currentPage);
     console.log(counter);
@@ -89,9 +105,11 @@ function Search() {
         onClick={() => {
           setKeyword(keywordAlpha);
         }}
+        disabled={keywordAlpha.length < 3 || keywordAlpha.length === 0 ? true : false}
       >
         OK
       </button>
+      <p>{searchError}</p>
       </div>
       <div className="main">
         {imagesOnLoad.map((img, i) => (
@@ -125,6 +143,12 @@ function Search() {
         onChange={(event) => changePage(event)}
       >
         Up
+      </button>
+      <button
+        onClick={() => goToFirstPage()}
+        onChange={(event) => changePage(event)}
+      >
+        First page
       </button>
       {/* {isFetching && <p>Fetching items...</p>}
       {!isFetching && <button onClick={loadMoreItems}>Load more</button>} */}

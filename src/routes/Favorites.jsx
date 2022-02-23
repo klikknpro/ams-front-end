@@ -3,7 +3,11 @@ import http from "axios";
 
 const Favorites = () => {
   return (
-    <div>Favorites</div>
+    <div>
+      <h2>Favorites</h2>
+      <div className="image" >
+        </div>
+    </div>
   )
 }
 
