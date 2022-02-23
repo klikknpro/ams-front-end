@@ -108,7 +108,7 @@ const handleKeyDown = (e) => {
   }, [keywordAlpha])
   
   return (
-    <div>
+    <div className="main-search">
       <div className="search-part">
       <input
         placeholder="Search"
