@@ -377,7 +377,8 @@ nav,
 button,
 h1,
 h2,
-input {
+input,
+div.main {
   z-index: 10;
   position: relative;
 }
