@@ -34,7 +34,7 @@ const NavBar = (props) => {
     // localStorage.removeItem('password')
     // localStorage.removeItem('sessionId')
     try {
-      const response = await http.delete('http://localhost:4000/api/logout', {
+      const response = await http.delete('http://localhost:3001/api/logout', {
         headers: {
           authorization: localStorage.getItem("sessionId")
         }
