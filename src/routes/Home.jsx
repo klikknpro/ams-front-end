@@ -82,7 +82,7 @@ const Home = () => {
         console.log(e);
       });
     setImagesOnLoad(artworksData);
-    if (artworksData.length === 0) {
+    if (artworksData.length === 0 && currentPage !== 0) {
       setCurrentPage(currentPage - 20);
       // return loadCleveland();
     }
@@ -119,7 +119,7 @@ const Home = () => {
   // };
 
   const validateSearch = () => {
-    const regex = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
+    const regex = /[`!@#$%^&*()_+\-=\[\]{};:"\\|,.<>\/?~]/;
     if (regex.test(keyword) === true) {
         setSearchError("Please dont use special characters in search!");
         // if (keyword.length === 0) {

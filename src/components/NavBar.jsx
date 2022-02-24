@@ -34,7 +34,7 @@ const NavBar = (props) => {
     // localStorage.removeItem('password')
     // localStorage.removeItem('sessionId')
     try {
-      const response = await http.delete('http://localhost:4000/api/logout', {
+      const response = await http.delete('http://localhost:3001/api/logout', {
         headers: {
           authorization: localStorage.getItem("sessionId")
         }
@@ -62,7 +62,7 @@ const NavBar = (props) => {
     <div className="navbar">
       <nav>
         <Link to="/">HOME</Link> |{" "}
-        <Link to="/imageDetails">Image Details (under construction)</Link> |{" "}
+        {/* <Link to="/imageDetails">Image Details (under construction)</Link> |{" "} */}
         <Link to="/favorites">Favorites</Link> |{" "}
         {/* <Link to="/signup">Sign Up</Link> |{" "} */}
         {/* <Link to="/login">Login</Link> */}

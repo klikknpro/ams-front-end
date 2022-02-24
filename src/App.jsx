@@ -28,7 +28,7 @@ function App() {
 
   return (
     <div className="App">
-      <NavBar loggedIn={loggedIn} setLoggedIn={setLoggedIn}/>
+      <NavBar loggedIn={loggedIn} setLoggedIn={setLoggedIn} setAuthUser={setAuthUser} setAuthPassword={setAuthPassword}/>
       <h1>Welcome to Schiele Art Museum!</h1>
       {/* <SignUp/> */}
       <Routes>

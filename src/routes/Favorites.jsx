@@ -93,8 +93,9 @@ const Favorites = () => {
             <div key={img.id}>
               <Link to={`/imageDetails/${img.id}`}>
                 <img src={img.image} alt="Anyád" />
+                <p>{img.title}</p>
               </Link>
-              <p>{img.title}</p>
+              {/* <p>{img.title}</p> */}
             </div>
           ))}
         </div>
