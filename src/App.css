@@ -71,6 +71,14 @@ body {
   );
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#eeedde",endColorstr="#203239",GradientType=1);
 }
+/* 
+div.home {
+  position: absolute;
+}
+div.main-search {
+  position: absolute;
+} */
+
 .search-part {
   position: relative;
   z-index: 10;
@@ -95,7 +103,9 @@ div.favorites-img {
   grid-template-columns: 1fr 1fr 1fr 1fr;
 
   margin: 100px 20px 100px 20px;
-  gap: 10px;
+  gap: 20px;
+  align-items: center;
+  z-index: 10;
 }
 
 div.favorites-img img {

@@ -149,7 +149,7 @@ useEffect(() => {
 
 
   return (
-    <div>
+    <div className="home">
       <div className="search-part">
         <input
           placeholder="Search"
