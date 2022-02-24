@@ -143,6 +143,17 @@ div.favorites-img p {
   z-index: 1;
 }
 
+@media screen and (max-width: 600px) {
+  .image {
+    width: 115%;
+    height: 110%;
+    left: 0;
+    background-repeat: round;
+
+    /* background-size: cover; */
+  }
+}
+
 nav a {
   font-family: "Fjalla One", sans-serif;
   font-weight: 400;
@@ -150,6 +161,14 @@ nav a {
   letter-spacing: 0.15rem;
 
   color: #203239;
+}
+
+@media screen and (max-width: 600px) {
+  nav a {
+    letter-spacing: 0.15rem;
+    font-size: 17px;
+    color: #0b1214;
+  }
 }
 
 .navbar {
@@ -400,4 +419,14 @@ nav button {
 
 p.description {
   padding: 0 10px 0 10px;
+}
+
+@media screen and (max-width: 600px) {
+  div.favorites-img {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  .main {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
 }
