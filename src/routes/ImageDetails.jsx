@@ -128,9 +128,15 @@ const ImageDetails = () => {
           <p>
             <b>Title:</b> {title}
           </p>
+          {date !== "null" ? (
           <p>
             <b>Date of creation:</b> {date}
           </p>
+          ) : (
+          <p>
+            <p>Unknown</p>
+          </p>
+          )}
           <p>
             <b>Technique:</b> {technique}
           </p>
