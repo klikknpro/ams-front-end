@@ -119,7 +119,7 @@ const Home = () => {
   // };
 
   const validateSearch = () => {
-    const regex = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
+    const regex = /[`!@#$%^&*()_+\-=\[\]{};:"\\|,.<>\/?~]/;
     if (regex.test(keyword) === true) {
         setSearchError("Please dont use special characters in search!");
         // if (keyword.length === 0) {
